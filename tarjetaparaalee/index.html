@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Feliz Cumpleaños Alee</title>
+
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            font-family: 'Agbalumo', sans-serif;
+            cursor: pointer;
+        }
+
+        /* CONFETTI */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: caer linear infinite;
+        }
+
+        @keyframes caer {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            width: 380px;
+            text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+            z-index: 10;
+            animation: aparecer 1.2s ease;
+        }
+
+        h1 {
+            font-family: 'Agbalumo', cursive;
+            color: #ff5fa2;
+            font-size: 2.6em;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #444;
+        }
+
+        .cat img {
+            width: 160px;
+            margin: 20px 0;
+        }
+
+        .hint {
+            font-size: 0.9em;
+            color: #888;
+            margin-top: 10px;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body onclick="iniciarMusica()">
+
+    <div class="card">
+        <h1>¡Feliz Cumpleaños Alee!</h1>
+
+        <div class="cat">
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTN1NDJ3d3c3OXN2MnYwcXRmdmt6ejRhYTJmaWk4OTN0MmV3ZGp4ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/EgzF8TC9iBewho3ZmC/giphy.gif" alt="Gatito bailando">
+        </div>
+
+        <p>Que te la pases de lo mejor y que Dios te de muchos años mas de vida Ale.😜❤️🎂</p>
+        <div class="hint">(Toca la pantalla una vez)</div>
+    </div>
+
+    <!-- MÚSICA DE FONDO -->
+    <audio id="musica" loop>
+        <source src="Happy Birthday (Piano Version).mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // CONFETTI
+        const colores = ["#ff5fa2", "#ffd166", "#06d6a0", "#118ab2", "#ef476f"];
+
+        for (let i = 0; i < 120; i++) {
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            confetti.style.opacity = Math.random();
+
+            document.body.appendChild(confetti);
+        }
+
+        // MÚSICA SIN BOTÓN
+        let musicaIniciada = false;
+
+            function iniciarMusica() {
+        if (!musicaIniciada) {
+            const musica = document.getElementById("musica");
+            musica.volume = 0.4; // 🔉 volumen bajo
+            musica.play();
+            musicaIniciada = true;
+        }
+        }
+    </script>
+
+</body>
+</html>
